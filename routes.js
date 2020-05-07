@@ -1,22 +1,25 @@
 'use strict';
 
 module.exports = function (app) {
-    var jsonku = require('./controller');
+    var profil = require('./controller');
     app.route('/')
-        .get(jsonku.index);
+        .get(profil.index);
 
-    app.route('/mahasiswa')
-        .get(jsonku.tampilsemuamahasiswa);
+    app.route('/user')
+        .get(profil.tampilsemuauser);
 
-    app.route('/mahasiswa/:id')
-        .get(jsonku.tampilberdasarkanid);
+    app.route('/user/:id')
+        .get(profil.tampilberdasarkanid);
 
-    app.route('/mahasiswa')
-        .post(jsonku.tambahmahasiswa);
+    app.route('/user')
+        .post(profil.tambahuser);
 
-    app.route('/mahasiswa')
-        .put(jsonku.ubahmahasiswa);
+    app.route('/user')
+        .put(profil.ubahuser);
 
-    app.route('/mahasiswa')
-        .delete(jsonku.hapusmahasiswa);
+    app.route('/user')
+        .delete(profil.hapususer);
+
+    app.route('/tampilbus')
+        .get(profil.tampilgroupbus);
 }
