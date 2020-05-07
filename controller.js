@@ -8,7 +8,6 @@ exports.index = function (req, res) {
 };
 
 //menampilkan semua data mahasiswa
-
 exports.tampilsemuamahasiswa = function (req, res) {
     connection.query('SELECT * from mahasiswa', function (error, rows, fileds) {
         if (error) {
@@ -19,3 +18,16 @@ exports.tampilsemuamahasiswa = function (req, res) {
         }
     });
 };
+
+//menampilkan semua data mahasiswa berdasarkan id
+exports.tampilberdasarkanid = function (req, res) {
+    let id = req.params.id;
+    connection.query('SELECT *from mahasiswa WHERE id_mahasiswa = ?', [id], function (error, rows, fileds) {
+        if (error) {
+            console.error();
+        }
+        else {
+            response.ok(rows, res)
+        }
+    });
+}
